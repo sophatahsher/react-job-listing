@@ -1,25 +1,22 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import dotenv from 'dotenv';
-import path from 'path';
+//import dotenv from 'dotenv';
+//import path from 'path';
 
 // Load environment variables
-dotenv.config({ path: path.resolve(__dirname, `.env.${process.env.NODE_ENV}`) });
+//dotenv.config({ path: path.resolve(__dirname, `.env.${process.env.NODE_ENV}`) });
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => {
-  const apiBaseUrl = process.env.VITE_API_BASE_URL;
-  return {
+export default defineConfig({
     plugins: [react()],
     server: {
       port: 3000,
       proxy: {
         '/api': {
-          target: apiBaseUrl ? apiBaseUrl : 'http://localhost:5000',
+          target: 'https://github.com/sophatahsher/react-job-listing/blob/main/src/jobs.json',
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/api/, ''),
         }
       }
     },
-  };
 })
