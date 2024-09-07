@@ -11,6 +11,7 @@ pipeline {
             }
             steps {
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+                echo "BuildNo: ${currentBuild.result}"
                 sh '''
                     ls -la 
                     node --version
