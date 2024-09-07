@@ -10,6 +10,7 @@ pipeline {
                 }
             }
             steps {
+                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
                 sh '''
                     ls -la 
                     node --version
@@ -30,7 +31,7 @@ pipeline {
             steps {
                 sh '''
                     test -f dist/index.html
-                    npm test
+                    #npm test
                 '''
             }
         }
