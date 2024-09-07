@@ -23,7 +23,14 @@ pipeline {
 
         stage('Test') {
             steps {
-                echo 'Test Stage'
+                sh 'test -f dist/index.html'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the application'
+                // Add deployment steps here
             }
         }
     }
